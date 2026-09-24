@@ -60,17 +60,22 @@
     <table class="uTable">
       <tr>
         <th>사용자 ID</th>
-        <td><input type="text" name="userId">
+        <td><input type="text" name="userId"
+          <c:if test="${registerFailed}">value="${user.userId}"</c:if> />
         </td>
       </tr>
       <tr>
         <th>비밀번호</th>
-        <td><input type="password" name="password"></td>
+        <td><input type="password" name="password"
+          <c:if test="${registerFailed}">value="${user.password}"</c:if> />
+        </td>
       </tr>
       <tr>
         <th>비밀번호 확인</th>
-        <td><input type="password" name="password2"></td>
-      </tr>
+        <td><input type="password" name="password2"
+          <c:if test="${registerFailed}">value="${user.password}"</c:if> />
+        </td>
+      </tr>      
       <tr>
         <th>이름</th>
         <td><input type="text" name="name"
