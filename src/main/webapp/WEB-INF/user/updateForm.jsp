@@ -40,11 +40,6 @@
     	}
     	form.submit();
     }
-    
-    function userList(targetUri) {
-    	form.action = targetUri;
-    	form.submit();
-    }
   </script>
 </head>
 <body>
@@ -52,7 +47,6 @@
   <div class="title">
     <span>사용자 관리 - 사용자 수정</span>
   </div>
-
   <!-- Update Form  -->
   <form name="form" method="POST" action="<c:url value='/user/update' />">
     <input type="hidden" name="userId" value="<%=user.getUserId()%>" />
@@ -89,8 +83,7 @@
     
     <div class="buttons">
       <button type="button" onClick="userModify()">수정</button>
-      <button type="button"
-        onClick="userList('<c:url value='/user/list' />')">목록</button>
+      <a class="btn" href="<c:url value='/user/list' />">목록</a>
     </div>
   </form>
 </body>
