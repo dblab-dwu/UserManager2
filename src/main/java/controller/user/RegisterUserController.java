@@ -15,19 +15,23 @@ public class RegisterUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		User user = new User(
+       	if (request.getMethod().equals("GET")) { 	// GET request: register form 요청 		
+            return "/user/registerForm.jsp";		// register form으로 forwarding
+    	}
+    			
+    	// POST request 처리    	
+ 		User user = new User(
 			request.getParameter("userId"),
 			request.getParameter("password"),
 			request.getParameter("name"),
 			request.getParameter("email"),
-			request.getParameter("phone"));
-		
+			request.getParameter("phone"));		
         log.debug("Create User : {}", user);
 
 		try {
 			UserManager manager = UserManager.getInstance();
 			manager.create(user);
-	        return "redirect:/user/list";		// 성공 시 사용자 리스트 화면으로 redirect
+	        return "redirect:/user/list";		// 사용자 리스트 요청으로 redirect
 	        
 		} catch (ExistingUserException e) {		// 예외 발생 시 회원가입 form으로 forwarding
            request.setAttribute("registerFailed", true);

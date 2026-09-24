@@ -60,36 +60,42 @@
     <table class="uTable">
       <tr>
         <th>사용자 ID</th>
-        <td><input type="text" name="userId">
+        <td><input type="text" name="userId"
+          <c:if test="${registerFailed}">value="${user.userId}"</c:if> />
         </td>
       </tr>
       <tr>
         <th>비밀번호</th>
-        <td><input type="password" name="password"></td>
+        <td><input type="password" name="password"
+          <c:if test="${registerFailed}">value="${user.password}"</c:if> />
+        </td>
       </tr>
       <tr>
         <th>비밀번호 확인</th>
-        <td><input type="password" name="password2"></td>
+        <td><input type="password" name="password2"
+          <c:if test="${registerFailed}">value="${user.password}"</c:if> />
+        </td>
       </tr>
       <tr>
         <th>이름</th>
         <td><input type="text" name="name"
-          <c:if test="${registerFailed}">value="${user.name}"</c:if>>
+          <c:if test="${registerFailed}">value="${user.name}"</c:if> />
         </td>
       </tr>
       <tr>
         <th>이메일 주소</th>
         <td><input type="text" name="email"
-          <c:if test="${registerFailed}">value="${user.email}"</c:if>>
+          <c:if test="${registerFailed}">value="${user.email}"</c:if> />
         </td>
       </tr>
       <tr>
         <th>전화번호</th>
         <td><input type="text" name="phone"
-          <c:if test="${registerFailed}">value="${user.phone}"</c:if>>
+          <c:if test="${registerFailed}">value="${user.phone}"</c:if> />
         </td>
       </tr>
     </table>    
+    
     <div class="buttons">
       <button type="button" onClick="userCreate()">가입</button>
       <a class="btn" href="<c:url value='/user/list' />">목록</a>

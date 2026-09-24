@@ -40,7 +40,7 @@
   </table>
   <div class="buttons">
     <a class="btn"
-      href="<c:url value='/user/update/form'>
+      href="<c:url value='/user/update'>    <!-- '/user/update/form'에서 수정됨 -->
 	          <c:param name='userId' value='${user.userId}'/>
 			 </c:url>">수정</a>
     <a class="btn"

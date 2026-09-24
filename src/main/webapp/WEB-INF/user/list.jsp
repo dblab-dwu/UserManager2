@@ -63,7 +63,8 @@
     </c:forEach>
   </table> 
   <div class="buttons">
-    <a class="btn" href="<c:url value='/user/register/form'/>">사용자 추가</a>
+    <a class="btn" href="<c:url value='/user/register'/>"> <!-- '/user/register/form' 에서 수정됨 -->
+      사용자 추가</a>
   </div>
 </body>
 </html>

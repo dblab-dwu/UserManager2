@@ -40,11 +40,6 @@
     	}
     	form.submit();
     }
-    
-    function userList(targetUri) {
-    	form.action = targetUri;
-    	form.submit();
-    }
   </script>
 </head>
 <body>
@@ -55,27 +50,24 @@
 
   <!-- Update Form  -->
   <form name="form" method="POST" action="<c:url value='/user/update' />">
-    <input type="hidden" name="userId" value="<%=user.getUserId()%>" />
+    <input type="hidden" name="userId" value="${user.userId}" />
     
     <table class="uTable">
       <tr>
         <th>사용자 ID</th>
-        <td><%=user.getUserId()%></td>
+        <td>${user.userId}</td>
       </tr>
       <tr>
         <th>비밀번호</th>
-        <td><input type="password" name="password"
-          value="<%=user.getPassword()%>" /></td>
+        <td><input type="password" name="password" value="${user.password}" /></td>
       </tr>
       <tr>
         <th>비밀번호 확인</th>
-        <td><input type="password" name="password2"
-          value="<%=user.getPassword()%>" /></td>
+        <td><input type="password" name="password2" value="${user.password}" /></td>
       </tr>
       <tr>
         <th>이름</th>
-        <td><input type="text" name="name"
-          value="<%=user.getName()%>" /></td>
+        <td><input type="text" name="name" value="${user.name}" /></td>
       </tr>
       <tr>
         <th>이메일 주소</th>
@@ -89,8 +81,7 @@
     
     <div class="buttons">
       <button type="button" onClick="userModify()">수정</button>
-      <button type="button"
-        onClick="userList('<c:url value='/user/list' />')">목록</button>
+      <a class="btn" href="<c:url value='/user/list' />">목록</a>
     </div>
   </form>
 </body>

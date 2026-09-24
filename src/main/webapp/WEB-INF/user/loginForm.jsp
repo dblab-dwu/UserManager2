@@ -47,7 +47,8 @@
     </table>
     <div class="buttons">
       <button type="button" onClick="login()">로그인</button> 
-      <a class="btn" href="<c:url value='/user/register/form'/>">회원가입</a>
+      <a class="btn" href="<c:url value='/user/register'/>"> <!-- '/user/register/form' 에서 수정됨 -->
+        회원가입</a>
     </div>
   </form>
   <div><br>(관리자 로그인: admin/admin)<br></div>
