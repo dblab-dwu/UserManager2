@@ -11,7 +11,7 @@ __Branches__
 - branched from *master*
 - integrates 2-phase data input processing using a form controller
 
-__변경된 코드
+변경된 코드
 
 - controller.RequestMapping --  _"/user/login/form", "/user/register/form",  "/user/update/form" request들에 대한 controller mapping 삭제_
 - controller.user.LoginController --  _login form에 대한 요청(GET request) 처리 포함_
@@ -22,17 +22,7 @@ __변경된 코드
 - /user/view.jsp --  _"수정" 링크의 request URI를 "/user/update" 로 변경_
 - 기존 Controller들에서 --  _로그인 체크 실패나 로그아웃 후 login form으로 redirection하기 위한 URI를 "/user/login"으로 변경_
 
-### 참고: Remote Github repo에 추가된 새로운 branch를 Eclipse로 가져와서 import하는 방법
- 
-1. Eclipse에서 Git perspective로 전환
-2. 기존 local repository 이름을 우클릭 > Remote > Fetch... 선택
-2. 팝업 창이 열리면 Next 클릭
-3. Source ref: 목록에서 가져올 branch 선택 후 Add Spec 클릭 (반복) > Finish 
-4. local repository의 Branches > Remote Tracking 아래에 추가된 branch를 더블 클릭
-5. Checkout as New Local Branch 클릭
-6. Java EE perspective로 전환해서 import된 project에 대해 Maven > Update Project 실행
-
-### 참고: Eclipse에서 local repo를 생성하고 project를 import하는 방법 
+### Eclipse에서 local repo를 생성하고 Github repo에서 project를 가져와서 import하는 방법 
  
 1. File 메뉴 > Import... > Git | Projects from Git (with smart import) 선택
 2. Clone URI 선택
@@ -42,16 +32,15 @@ __변경된 코드
 6. 다음 화면(Imports project ...)에서 Finish
 7. 프로젝트가 import되었는지 확인하고 프로젝트가 빌드 완료될 때까지 기다림
 8. 오류가 표시되어 있으면 Maven > Update project.. 실행 (Alt+F5)
-
-처음에 import되는 프로젝트는 master branch이며, 다른 branch의 프로젝트를 import하거나 서로 전환하기 위해서는 다음과 같은 방법을 이용함
-
-
-1. Git Perspective 실행(툴바 오른쪽 상단의 Open Perspective 아이콘에서 Git 항목 선택)  
-2. Git Repositories 창에서 UserManager > Branches > Remote Tracking 아래에 있는 branch들 중 원하는 branch를 선택해서 더블클릭
-3. Checkout as New Local Branch 실행   
-4. Java EE perspective로 전환하여 checkout된 프로젝트 이용
  
+### 기존 Github repo에 추가된 새로운 branch를 local repo로 가져와서 import하는 방법
  
-Local 아래의 다른 branch로 전환하려면 그 branch 이름을 더블클릭하여 checkout하거나, 
-Java EE perspective의 Project Explorer 창에서 프로젝트 이름을 마우스 우클릭한 후 Team > Switch To > branch 이름을 선택함  
-
+1. Eclipse에서 Git perspective로 전환
+2. 기존 local repository 이름을 우클릭 > Remote > Fetch... 선택
+2. 팝업 창이 열리면 Next 클릭
+3. Source ref: 목록에서 가져올 branch 선택 후 Add Spec 클릭 (반복) > Finish 
+4. local repository의 Branches > Remote Tracking 아래에 추가된 branch를 더블 클릭
+5. Checkout as New Local Branch 클릭
+6. Java EE perspective로 전환해서 import된 project에 대해 Maven > Update Project 실행
+  
+** 프로젝트에서 branch들 간의 전환은 Team > Switch To > branch 이름을 선택하거나 Git perspective에서 local branch 이름을 더블클릭하여 checkout 함 
