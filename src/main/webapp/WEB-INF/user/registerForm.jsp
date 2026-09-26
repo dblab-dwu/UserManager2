@@ -44,7 +44,7 @@
   </script>
 </head>
 <body>
-  <div class="appTitle">User-Manager2</div>
+  <div class="appTitle">${pageContext.servletContext.servletContextName}</div>
   <div class="title">
     <span>사용자 관리 - 회원 가입</span>
   </div>

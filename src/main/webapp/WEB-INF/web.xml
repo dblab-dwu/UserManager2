@@ -4,8 +4,8 @@
     xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
     					https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
     version="6.0">
-	<display-name>UserManager2</display-name>
-	<description>User Manager Ver.2</description>
+	<display-name>UserManager v2.1 (FormController)</display-name>
+	<description>User Manager v2.1</description>
 	<distributable />
 	<filter>
 		<filter-name>Resource Filter</filter-name>

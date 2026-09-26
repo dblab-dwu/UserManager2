@@ -15,7 +15,7 @@
   <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
 </head>
 <body>
-  <div class="appTitle">User-Manager2</div>
+  <div class="appTitle">${pageContext.servletContext.servletContextName}</div>
   <div class="logout">
     <a href="<c:url value='/user/logout' />">로그아웃
       (&nbsp;${curUserId}&nbsp;)</a>
