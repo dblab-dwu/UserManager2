@@ -4,12 +4,12 @@ based on MVC architecture
 
 __Branches__
  
-- master (default)
-- <span style="color:blue">update (UserManager2u)</span> 
+- master
+- <span style="color:blue">formCont(v2.1)</span> 
   
-### update branch
+### formCont branch
 - branched from *master*
-- integrates 2-phase data input processing using a form controller
+- integrates 2-phase data input processing using a single form controller
 
 변경된 코드
 
