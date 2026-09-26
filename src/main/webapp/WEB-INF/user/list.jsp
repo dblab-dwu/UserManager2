@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=utf-8"%>
 <%@page import="java.util.*"%>
-<%@page import="model.User"%>
+<%@page import="model.domain.User"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--   
   // 아래와 같은  scriptlet은 생략하고 EL로 구현하는 것이 바람직함 
@@ -28,6 +28,7 @@
       <th>사용자 ID</th>
       <th>이름</th>
       <th>이메일</th>
+      <th>소속(커뮤니티)</th>
     </tr>
 <%--
     <%
@@ -56,15 +57,20 @@
       <tr>
         <td>${user.userId}</td>
         <td><a href="<c:url value='/user/view'>
-              <c:param name='userId' value='${user.userId}'/>
-              </c:url>">${user.name}</a></td>
+                <c:param name='userId' value='${user.userId}'/>
+              </c:url>">
+              ${user.name}</a></td>
         <td>${user.email}</td>
+        <td><a href="<c:url value='/community/view'>
+                <c:param name='commId' value='${user.commId}'/>
+              </c:url>">
+              ${user.commName}</a></td>
       </tr>
     </c:forEach>
   </table> 
   <div class="buttons">
-    <a class="btn" href="<c:url value='/user/register'/>"> <!-- '/user/register/form' 에서 수정됨 -->
-      사용자 추가</a>
+    <a class="btn" href="<c:url value='/user/register'/>">사용자 추가</a>
+    <a class="btn" href="<c:url value='/community/list'/>">커뮤니티 목록</a>
   </div>
 </body>
 </html>

@@ -4,11 +4,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.Controller;
+import model.domain.Community;
+import model.domain.User;
 import model.service.UserManager;
-import model.User;
 
 public class UpdateUserController implements Controller {
     private static final Logger log = LoggerFactory.getLogger(UpdateUserController.class);
@@ -32,8 +35,11 @@ public class UpdateUserController implements Controller {
     		if (UserSessionUtils.isLoginUser(updateId, session) ||  // 현재 로그인한 사용자가 자신의 정보를 수정하는 경우	
     			UserSessionUtils.isLoginUser("admin", session)) {   // 현재 사용자가 관리자인 경우 타인 정보도 수정 가능
     			
-    			return "/user/updateForm.jsp";   // update form으로 forwarding(user 객체 전달)     
-    		}
+    			List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
+				request.setAttribute("commList", commList);	
+				
+				return "/user/updateForm.jsp";   // 검색된 사용자 정보 및 커뮤니티 리스트를 updateForm으로 전송     
+			}   
     		
     		// else 즉, updateId 사용자를 수정 불가능한 경우 사용자 보기 결과 화면으로 이동
 			request.setAttribute("updateFailed", true);
@@ -49,7 +55,9 @@ public class UpdateUserController implements Controller {
     		request.getParameter("password"),
     		request.getParameter("name"),
     		request.getParameter("email"),
-    		request.getParameter("phone"));        	
+    		request.getParameter("phone"),
+			Integer.parseInt(request.getParameter("commId")));
+        	
     	log.debug("Update User : {}", updateUser);
 
 		manager.update(updateUser);		// 사용자 정보 변경 처리		

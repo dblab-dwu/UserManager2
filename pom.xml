@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dbp</groupId>
 	<artifactId>UserManager2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>User Manager v2.1 based on MVC Architecture</name>
+	<name>User Manager v2.2 based on MVC Architecture</name>
 	<description>Sample project for Database Programming class</description>
 	
 	<properties>

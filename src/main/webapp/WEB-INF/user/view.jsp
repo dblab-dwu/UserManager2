@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=utf-8"%>
-<%@page import="model.User"%>
+<%@page import="model.domain.User"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
   User user = (User) request.getAttribute("user");
@@ -37,6 +37,17 @@
       <th>전화번호</th>
       <td>${user.phone}<%-- <%=user.getPhone()%> --%></td>
     </tr>
+    <tr>
+      <th>소속 커뮤니티</th>
+      <td>
+        <a href="<c:url value='/community/view'>
+            <c:param name='commId' value='${user.commId}'/>
+          </c:url>">
+          ${user.commName} <%-- <%=user.commName()%> --%>
+        </a>
+        <c:if test="${user.chair}">&nbsp;(회장)</c:if>
+      </td>
+    </tr>   
   </table>
   <div class="buttons">
     <a class="btn"

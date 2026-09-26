@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import controller.comm.CreateCommunityController;
+import controller.comm.DeleteCommunityController;
+import controller.comm.ListCommunityController;
+import controller.comm.UpdateCommunityController;
+import controller.comm.ViewCommunityController;
 import controller.user.*;
 
 public class RequestMapping {
@@ -26,6 +32,14 @@ public class RequestMapping {
         // mappings.put("/user/update/form", new UpdateUserController());	// 아래의 요청으로 통합
         mappings.put("/user/update", new UpdateUserController());	
         
+        // 커뮤니티 관련 request URI 추가
+        mappings.put("/community/list", new ListCommunityController());
+        mappings.put("/community/view", new ViewCommunityController());
+        // mappings.put("/community/create/form", new ForwardController("/community/creationForm.jsp"));  // 아래의 요청으로 통합
+        mappings.put("/community/create", new CreateCommunityController());
+        mappings.put("/community/delete", new DeleteCommunityController());
+        mappings.put("/community/update", new UpdateCommunityController());
+
         logger.info("Initialized Request Mapping!");
     }
 

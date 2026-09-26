@@ -1,4 +1,4 @@
-package model;
+package model.domain;
 
 /**
  * 사용자 관리를 위해 필요한 도메인 클래스. USERINFO 테이블과 대응됨
@@ -9,23 +9,32 @@ public class User {
 	private String name;
 	private String email;
 	private String phone;
-
-	public User() { }	// 기본 생성자
+	private int commId;			// 커뮤니티 ID
+	private String commName;	// 커뮤니티 이름
+	private boolean chair;	// 커뮤니티 회장 여부
 	
-	public User(String userId, String password, String name, String email, String phone) {
+	public User() {}			// 기본 생성자
+	
+	public User(String userId, String password, String name, String email, String phone, int commId) {
 		this.userId = userId;
 		this.password = password;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
+		this.commId = commId;
+	}
+	
+	public User(String userId, String password, String name, String email, String phone, int commId, String commName) {
+		this(userId, password, name, email, phone, commId);
+		this.commName = commName;
 	}
 
-	public void update(User updateUser) {
-        this.password = updateUser.password;
-        this.name = updateUser.name;
-        this.email = updateUser.email;
-        this.phone = updateUser.phone;
-    }
+	public User(String userId, String name, String email, String phone) {
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;		
+	}
 	
 	public String getUserId() {
 		return userId;
@@ -67,6 +76,30 @@ public class User {
 		this.phone = phone;
 	}
 
+	public int getCommId() {
+		return commId;
+	}
+
+	public void setCommId(int commId) {
+		this.commId = commId;
+	}
+
+	public String getCommName() {
+		return commName;
+	}
+
+	public void setCommName(String commName) {
+		this.commName = commName;
+	}
+
+	public boolean isChair() {
+		return chair;
+	}
+
+	public void setChair(boolean isChair) {
+		this.chair = isChair;
+	}	
+	
 	/* 비밀번호 검사 */
 	public boolean matchPassword(String password) {
 		if (password == null) {
@@ -82,6 +115,6 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + "]";
-	}	
+				+ phone + ", commId=" + commId + "]";
+	}
 }

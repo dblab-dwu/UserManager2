@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=utf-8"%>
-<%@page import="model.User"%>
+<%@page import="model.domain.User"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
   User user = (User) request.getAttribute("user");
@@ -77,6 +77,19 @@
         <th>전화번호</th>
         <td><input type="text" name="phone" value="${user.phone}" /></td>
       </tr>
+      <tr>
+        <th>커뮤니티</th>
+        <td>
+          <select name="commId">
+            <option value="0">없음</option>
+            <c:forEach var="comm" items="${commList}">
+              <option value="${comm.id}"
+                <c:if test="${comm.id eq user.commId}">selected="selected"</c:if>>
+                ${comm.name}</option>
+            </c:forEach>
+          </select>     
+        </td>
+      </tr>    
     </table>
     
     <div class="buttons">

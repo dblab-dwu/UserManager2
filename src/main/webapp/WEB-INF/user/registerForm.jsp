@@ -94,6 +94,19 @@
           <c:if test="${registerFailed}">value="${user.phone}"</c:if> />
         </td>
       </tr>
+      <tr>
+        <th>커뮤니티</th>
+        <td>
+          <select name="commId">
+            <option value="0">없음</option>
+            <c:forEach var="comm" items="${commList}">
+              <option value="${comm.id}"
+                <c:if test="${registerFailed && comm.id eq user.commId}">selected="selected"</c:if>>
+                ${comm.name}</option>
+            </c:forEach>
+          </select>     
+        </td>
+      </tr>       
     </table>    
     
     <div class="buttons">
