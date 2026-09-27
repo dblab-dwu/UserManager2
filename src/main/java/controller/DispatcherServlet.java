@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -9,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 //@WebServlet(name="dispatcherSevlet", urlPatterns="/", loadOnStartup=1)
 public class DispatcherServlet extends HttpServlet {
@@ -36,7 +39,22 @@ public class DispatcherServlet extends HttpServlet {
         try {
         	// controller를 통해 request 처리 후, 이동할 uri를 반환 받음
             String uri = controller.execute(request, response);
-            
+
+            if (uri == null) {		// REST request에 대한 응답 생성
+            	Object result = request.getAttribute("result");
+            	if (result != null) {
+                	// REST controller의 실행 결과를 JSON 텍스트로 변환 
+	            	ObjectMapper mapper = new ObjectMapper();
+	            	String jsonString = mapper.writeValueAsString(result);
+	               	logger.debug("result in JSON: {}", jsonString);
+	
+	               	// JSON 형식의 response message 생성 	
+	            	response.setContentType("application/json;charset=utf-8");
+	            	response.getWriter().println(jsonString);     
+            	}
+            	return;		
+            }
+           
  			// 반환된 uri에 따라 forwarding 또는 redirection 여부를 결정하고 이동 
             if (uri.startsWith("redirect:")) {	
             	// redirection 지시

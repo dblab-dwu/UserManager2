@@ -9,8 +9,8 @@ import controller.Controller;
 import model.domain.Community;
 import model.service.UserManager;
 
-public class CreateCommunityController implements Controller {
-    private static final Logger log = LoggerFactory.getLogger(CreateCommunityController.class);
+public class CreateCommunityController_deprecated implements Controller {
+    private static final Logger log = LoggerFactory.getLogger(CreateCommunityController_deprecated.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

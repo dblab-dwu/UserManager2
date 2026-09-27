@@ -26,7 +26,7 @@ public class Community {
 		this.startDate = startDate;
 		this.chairId = chairId;
 		this.chairName = chairName;
-		this.setNumOfMembers(0);
+		//this.setNumOfMembers(0);
 	}
 	
 	public Community(int id, String name, String description, int numOfMembers) {
@@ -35,6 +35,12 @@ public class Community {
 		this.name = name;
 		this.description = description;
 		this.numOfMembers = numOfMembers;
+	}
+
+	public Community(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
 	}
 
 	public int getId() {

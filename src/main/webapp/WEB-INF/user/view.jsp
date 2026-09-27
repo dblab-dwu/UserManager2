@@ -61,11 +61,10 @@
       onclick="return userRemove();">삭제</a>
     <a class="btn" href="<c:url value='/user/list'/>">목록</a>
   </div>
-  <div class="errmsg">
+
+  <c:if test="${updateFailed || deleteFailed}">
     <!-- 수정 또는 삭제가 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-    <c:if test="${updateFailed || deleteFailed}">
-      <c:out value="${exception.getMessage()}" />
-    </c:if>
-  </div>
+    <div class="errmsg">${exception.getMessage()}" /></div>   
+  </c:if>
 </body>
 </html>

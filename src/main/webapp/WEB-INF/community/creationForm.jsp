@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/community.css' />" type="text/css">
 <script>
-    function commCreate() {
+    function postCommunityInfo() {
     	if (form.name.value == "") {
     		alert("이름을 입력하십시오.");
     		form.name.focus();
@@ -17,9 +17,28 @@
     		form.desc.focus();
     		return false;
     	}	
-    	form.submit();
+    
+    	const params = { 
+    		name : form.name.value, 
+    		description : form.desc.value 
+    	}
+    	const requestUri = '<c:url value="/rest/community/create"/>';
+    	
+        fetch(requestUri, {					// Ajax POST 요청
+        	method: 'POST',  headers: { 'Content-Type': 'application/json' },  		
+        	body: JSON.stringify(params)	// 전송할 객체를 JSON 문자열로 변환 
+        })
+      	.then(response => {					// 응답 객체
+      		if (!response.ok) throw new Error(response.statusText);
+      		return response.json(); 		// JSON 응답 데이터 parsing
+      	})
+      	.then(result => console.log(result))  // parsing된 객체 	
+      	.catch(error => console.error('Error: ', error));
+        
+        form.name.value = '';
+        form.desc.value = '';
     }
-    </script>
+</script>
 </head>
 <body>
   <div class="appTitle">${pageContext.servletContext.servletContextName}</div>
@@ -27,14 +46,7 @@
     <span>커뮤니티 관리 - 생성</span>
   </div>
   <!-- creation form  -->
-  <form name="form" method="POST" action="<c:url value='/community/create' />">
-    <div class="errmsg">
-      <!-- 커뮤니티 생성이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-      <c:if test="${creationFailed}">
-        <font color="red"><c:out
-            value="${exception.getMessage()}" /></font>
-      </c:if>
-    </div>
+  <form id="form" name="form">
     <table class="cTable">
       <tr>
         <th>이름</th>
@@ -50,7 +62,7 @@
       </tr>
     </table>    
     <div class="buttons">
-      <button type="button" onClick="commCreate()">생성</button>
+      <button type="button" onclick="postCommunityInfo()">생성</button>
       <a class="btn" href="<c:url value='/community/list' />">커뮤니티 목록</a>
     </div>    
   </form>
