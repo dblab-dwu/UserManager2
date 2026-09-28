@@ -31,7 +31,7 @@
   <form name="form" method="POST" action="<c:url value='/user/login' />">
     <c:if test="${loginFailed}">
       <!-- 로그인이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-      <div class="errmsg">${exception.getMessage()}" /></div>   
+      <div class="errmsg">${exception.getMessage()}</div>   
     </c:if>
     
     <table class="uTable">

@@ -64,7 +64,7 @@
 
   <c:if test="${updateFailed || deleteFailed}">
     <!-- 수정 또는 삭제가 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-    <div class="errmsg">${exception.getMessage()}" /></div>   
+    <div class="errmsg">${exception.getMessage()}</div>
   </c:if>
 </body>
 </html>

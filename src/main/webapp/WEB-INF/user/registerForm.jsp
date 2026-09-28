@@ -53,7 +53,7 @@
   <form name="form" method="POST" action="<c:url value='/user/register' />">
     <c:if test="${registerFailed}">
       <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-      <div class="errmsg">${exception.getMessage()}" /></div>   
+      <div class="errmsg">${exception.getMessage()}</div>   
     </c:if>
     
     <table class="uTable">
