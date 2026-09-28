@@ -41,13 +41,22 @@ public class RequestMapping {
         
         // 커뮤니티 생성 및 상세정보 요청에 대한 REST controller mapping 설정 추가    
         mappings.put("/rest/community/create", new CreateCommunityRestController());
-        mappings.put("/rest/community/view", new ViewCommunityRestController());
+        mappings.put("/rest/community/view/", new ViewCommunityRestController());
 
         logger.info("Initialized Request Mapping!");
     }
 
     public Controller findController(String uri) {	
     	// 주어진 uri에 대응되는 controller 객체를 찾아 반환
-        return mappings.get(uri);
+    	return mappings.get(uri);
+    }
+    
+    public Map.Entry<String, Controller> findRestController(String uri) {	
+    	// uri 끝부분에 parameter 포함 가능
+    	for (Map.Entry<String, Controller> entry : mappings.entrySet()) {    		
+    		if (uri.startsWith(entry.getKey()))  
+    			return entry;		// map entry를 반환
+    	}
+    	return null;
     }
 }

@@ -15,9 +15,7 @@
  */
  
 function getCommunityInfo(selected) {
-	const params = { 'commId' : selected.id }
-	const requestUri = '<c:url value='/rest/community/view?'/>' 
-					 + new URLSearchParams(params).toString();			
+	const requestUri = '<c:url value='/rest/community/view/'/>' + selected.id;			
 
 	fetch(requestUri)     	// Ajax GET 요청
 	.then(response => {		// 응답 객체
