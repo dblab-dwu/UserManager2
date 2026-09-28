@@ -21,12 +21,10 @@ public class CreateCommunityController implements Controller {
     	// POST request 처리    	
  		Community comm = new Community(0,
     		request.getParameter("name"),
-			request.getParameter("desc"),
-			null, null, null);		
+			request.getParameter("desc"), null, null);		
         
 		try {
-			UserManager manager = UserManager.getInstance();
-			manager.createCommunity(comm);
+			UserManager.getInstance().createCommunity(comm);
 			
 	    	log.debug("Create Community : {}", comm);
 	        return "redirect:/community/list";	// 성공 시 커뮤니티 리스트 화면으로 redirect

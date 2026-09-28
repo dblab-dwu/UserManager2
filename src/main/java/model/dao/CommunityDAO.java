@@ -123,7 +123,7 @@ public class CommunityDAO {
 	 * 저장하여 반환.
 	 */
 	public Community findCommunity(int commId) throws SQLException {
-        String sql = "SELECT cName, descr, startDate, chairId, u.name As chairName "
+        String sql = "SELECT cName, descr, startDate, chairId "
         			+ "FROM Community c LEFT OUTER JOIN UserInfo u ON c.chairId = u.userId "
         			+ "WHERE cId=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {commId});	// JDBCUtil에 query문과 매개 변수 설정
@@ -136,8 +136,7 @@ public class CommunityDAO {
 					rs.getString("cName"),
 					rs.getString("descr"),
 					rs.getDate("startDate"),
-					rs.getString("chairId"),
-					rs.getString("chairName"));
+					rs.getString("chairId"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -176,26 +175,5 @@ public class CommunityDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return null;
-	}
-	
-	/**
-	 * 주어진 ID에 해당하는 커뮤니티가 존재하는지 검사 
-	 */
-	public boolean existingCommunity(String commId) throws SQLException {
-		String sql = "SELECT count(*) FROM Community WHRE cId=?";      
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {commId});	// JDBCUtil에 query문과 매개 변수 설정
-
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
-			if (rs.next()) {
-				int count = rs.getInt(1);
-				return (count == 1 ? true : false);
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();		// resource 반환
-		}
-		return false;
 	}
 }

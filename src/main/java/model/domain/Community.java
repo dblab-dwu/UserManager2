@@ -12,20 +12,18 @@ public class Community {
 	private String description;
 	private Date startDate;
 	private String chairId;
-	private String chairName;
 	private int numOfMembers;
 	private List<User> memberList;
 
 	public Community() {}		// 기본 생성자
 	
-	public Community(int id, String name, String description, Date startDate, String chairId, String chairName) {
+	public Community(int id, String name, String description, Date startDate, String chairId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.startDate = startDate;
 		this.chairId = chairId;
-		this.chairName = chairName;
 		this.setNumOfMembers(0);
 	}
 	
@@ -77,14 +75,6 @@ public class Community {
 		this.chairId = chairId;
 	}
 
-	public String getChairName() {
-		return chairName;
-	}
-
-	public void setChairName(String chairName) {
-		this.chairName = chairName;
-	}
-
 	public int getNumOfMembers() {
 		return numOfMembers;
 	}
@@ -104,6 +94,6 @@ public class Community {
 	@Override
 	public String toString() {
 		return "Community [id=" + id + ", name=" + name + ", description=" + description + ", startDate=" + startDate
-				+ ", chairId=" + chairId + ", chairName=" + chairName + ", numOfMembers=" + numOfMembers + "]";
+				+ ", chairId=" + chairId + ", numOfMembers=" + numOfMembers + "]";
 	}
 }
