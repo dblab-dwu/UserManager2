@@ -14,8 +14,8 @@
  * 선택된 커뮤니티의 상세 정보와 회원 리스트를 커뮤니티 리스트 아래에 각각 테이블로 출력시킴 (DOM API 이용)
  */
  
-function getCommunityInfo(selected) {
-	const requestUri = '<c:url value='/rest/community/view/'/>' + selected.id;			
+function getCommunityInfo(commId) {
+	const requestUri = '<c:url value='/rest/community/view/'/>' + commId;			
 
 	fetch(requestUri)     	// Ajax GET 요청
 	.then(response => {		// 응답 객체
@@ -93,7 +93,7 @@ function commRemove() {
           <%-- <a href="<c:url value='/community/view'>
                   <c:param name='commId' value='${comm.id}'/>
                </c:url>"> --%>            
-          <a id="${comm.id}" href="#" onclick="getCommunityInfo(this)">${comm.name}</a></td>
+          <a href="#" onclick="getCommunityInfo(${comm.id})">${comm.name}</a></td>
         <td>${comm.description}</td>
         <td>${comm.numOfMembers}</td>
       </tr>
