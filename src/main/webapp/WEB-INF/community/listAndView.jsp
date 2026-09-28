@@ -120,7 +120,7 @@ function commRemove() {
   <div id="memberList"></div>   <!-- 커뮤니티 회원 리스트가 출력될 영역 -->
   
   <div class="buttons">
-    <a class="btn" href="<c:url value='/rest/community/create'/>">커뮤니티 추가</a>
+    <a class="btn" href="<c:url value='/community/create'/>">커뮤니티 추가</a>
     <a class="btn" href="<c:url value='/user/list'/>">사용자 목록</a>
   </div>
 </body>

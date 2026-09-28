@@ -34,6 +34,7 @@ public class RequestMapping {
         
         // 커뮤니티 관련 request mapping
         // mappings.put("/community/create", new CreateCommunityController_deprecated());
+        mappings.put("/community/create", new ForwardController("/community/creationForm.jsp"));
         mappings.put("/community/delete", new DeleteCommunityController());
         mappings.put("/community/update", new UpdateCommunityController());
 		mappings.put("/community/list", new ListCommunityController());
