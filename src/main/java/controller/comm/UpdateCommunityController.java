@@ -36,7 +36,7 @@ public class UpdateCommunityController implements Controller {
     		commId,
     		request.getParameter("name"),
     		request.getParameter("desc"),
-    		null, request.getParameter("chairId"), null);
+    		null, request.getParameter("chairId"));
 
     	log.debug("Update Community : {}", comm);
 

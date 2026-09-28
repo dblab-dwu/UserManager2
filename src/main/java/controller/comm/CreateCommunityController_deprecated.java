@@ -22,7 +22,7 @@ public class CreateCommunityController_deprecated implements Controller {
  		Community comm = new Community(0,
     		request.getParameter("name"),
 			request.getParameter("desc"),
-			null, null, null);		
+			null, null);		
         
 		try {
 			UserManager manager = UserManager.getInstance();
