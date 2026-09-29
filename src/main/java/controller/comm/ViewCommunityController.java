@@ -7,7 +7,7 @@ import controller.Controller;
 import model.domain.Community;
 import model.service.UserManager;
 
-public class ViewCommunityController_deprecated implements Controller {
+public class ViewCommunityController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	
